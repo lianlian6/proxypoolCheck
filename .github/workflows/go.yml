@@ -24,6 +24,9 @@ jobs:
 
       - name: Get dependencies and run test
         run: |
+          go env -w GO111MODULE=on |
+          go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct |
+          go env -w GOPRIVATE=*.corp.example.com |
           go test ./...
 
       - name: Build
