@@ -175,7 +175,7 @@ func setupRouter() {
 		c.String(200, text)
 	})
 	router.GET("/ss/sub", func(c *gin.Context) {
-		proxies := cache.GetProxies("proxies")
+		proxies := appcache.GetProxies("proxies")
 		ssSub := provider.SSSub{
 			provider.Base{
 				Proxies: &proxies,
