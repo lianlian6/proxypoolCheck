@@ -174,6 +174,16 @@ func setupRouter() {
 		}
 		c.String(200, text)
 	})
+	router.GET("/ss/sub", func(c *gin.Context) {
+		proxies := cache.GetProxies("proxies")
+		ssSub := provider.SSSub{
+			provider.Base{
+				Proxies: &proxies,
+				Types:   "ss",
+			},
+		}
+		c.String(200, ssSub.Provide())
+	})
 	router.GET("/forceupdate", func(c *gin.Context) {
 		err := app.InitApp()
 		if err != nil {
