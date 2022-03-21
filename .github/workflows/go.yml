@@ -36,7 +36,7 @@ jobs:
         env:
           NAME: proxypool
           BINDIR: bin
-        run: make -j releases
+        run: make -j docker
 
       - name: Release
         uses: softprops/action-gh-release@v0.1.5

@@ -1,7 +1,6 @@
 NAME=proxypoolCheck
 BINDIR=bin
-#VERSION=$(shell git describe --tags || echo "unknown version")
-VERSION=$(echo "unknown version")
+VERSION=$(shell git describe --tags || echo "unknown version")
 GOBUILD=CGO_ENABLED=0 go build -trimpath -ldflags '-w -s'
 
 PLATFORM_LIST = \
@@ -76,6 +75,7 @@ gz_releases=$(addsuffix .gz, $(PLATFORM_LIST))
 
 $(gz_releases): %.gz : %
 	chmod +x $(BINDIR)/$(NAME)-$(basename $@)
+	chmod +x bin/proxypoolCheck-linux-mips64
 	gzip -f -S -$(VERSION).gz $(BINDIR)/$(NAME)-$(basename $@)
 
 all-arch: $(PLATFORM_LIST)
