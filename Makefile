@@ -1,6 +1,7 @@
 NAME=proxypoolCheck
 BINDIR=bin
-VERSION=$(shell git describe --tags || echo "unknown version")
+#VERSION=$(shell git describe --tags || echo "unknown version")
+VERSION=$(echo "unknown version")
 GOBUILD=CGO_ENABLED=0 go build -trimpath -ldflags '-w -s'
 
 PLATFORM_LIST = \
